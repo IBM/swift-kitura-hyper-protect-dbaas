@@ -1,0 +1,3 @@
+.build/							usr/src/swiftkiturahypersecuredbaas
+terraform/scripts/install.sh	usr/src/swiftkiturahypersecuredbaas
+terraform/scripts/start.sh		usr/src/swiftkiturahypersecuredbaas
