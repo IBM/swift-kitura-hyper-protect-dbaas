@@ -24,7 +24,6 @@ This application has been generated with the following capabilities and services
 * [Iterative Development](#iterative-development)
 * [IBM Cloud deployment](#ibm-cloud-deployment)
 
-
 ### Requirements
 * [Swift 4](https://swift.org/download/)
 
@@ -44,7 +43,6 @@ To compile the application using the tools docker image, run:
 
 To run the application:
 * `docker run -it -p 8080:8080 -v $PWD:/swift-project -w /swift-project myapp-run sh -c .build-ubuntu/release/swiftkiturahypersecuredbaas`
-
 
 #### Kubernetes
 To deploy your application to your Kubernetes cluster, run `helm install --name myapp .` in the `/chart/swiftkiturahypersecuredbaas` directory. You need to make sure you change the `repository` variable in your `chart/swiftkiturahypersecuredbaas/values.yaml` file points to the docker image containing your runnable application.
@@ -124,7 +122,6 @@ Your application has a set of cloud deployment configuration files defined to su
 The [`manifest.yml`](https://console.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest) defines options which are passed to the Cloud Foundry `cf push` command during application deployment.
 
 [IBM Cloud DevOps](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html) service provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud, for both Cloud Foundry and Kubernetes applications. The ["Create Toolchain"](#deploy-to-ibm-cloud) button creates a DevOps toolchain and acts as a single-click deploy to IBM Cloud including provisioning all required services.
-
 
 ### License
 All generated content is available for use and modification under the permissive MIT License (see `LICENSE` file), with the exception of SwaggerUI which is licensed under an Apache-2.0 license (see `NOTICES.txt` file).
