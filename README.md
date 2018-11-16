@@ -1,4 +1,4 @@
-## Scaffolded Swift Kitura server application
+# Create a hypersecure Swift application using Kitura
 
 This scaffolded application provides a starting point for creating Swift applications running on [Kitura](http://www.kitura.io/).
 
