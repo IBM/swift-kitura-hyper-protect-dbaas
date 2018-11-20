@@ -1,3 +1,6 @@
+[![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)
+[![Platform](https://img.shields.io/badge/platform-ios_swift-lightgrey.svg?style=flat)](https://developer.apple.com/swift/)
+
 # Create a hypersecure Swift application using Kitura
 
 This scaffolded application provides a starting point for creating Swift applications running on [Kitura](http://www.kitura.io/).
