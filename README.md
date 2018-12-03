@@ -3,7 +3,14 @@
 
 # Create a hypersecure Swift application using Kitura
 
-This scaffolded application provides a starting point for creating Swift applications running on [Kitura](http://www.kitura.io/).
+In this code pattern, you will create an server-side application using [Kitura](http://www.kitura.io/) in Swift and Hyper Protect Services. Hyper Protect Services bring continuous security to IBM Cloud, so all data is encrypted in flight, at rest, and in use.
+
+When you have completed this code pattern, you will understand how to:
+
+* Provision and integrate Hyper Protect Services
+* Generate an application with files for deploying to Kubernetes, Cloud Foundry or a DevOps Pipeline
+* Generate an application with files for monitoring and distributed trace using App Metrics
+* Connect to additional provisioned services
 
 ## Project contents
 
