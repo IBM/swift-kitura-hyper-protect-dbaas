@@ -76,11 +76,7 @@ To use iterative development:
 
 ## Deploy to IBM Cloud
 
-You can deploy your application to IBM Cloud using:
-* the [CloudFoundry CLI](#cloudfoundry-cli)
-* an [IBM Cloud toolchain](#ibm-cloud-toolchain)
-
-### CloudFoundry CLI
+You can deploy your application to IBM Cloud using the [CloudFoundry CLI](#cloudfoundry-cli).
 
 You can deploy the application to IBM Cloud using the CloudFoundry command-line:
 1. Install the Cloud Foundry command-line (https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
@@ -88,12 +84,6 @@ You can deploy the application to IBM Cloud using the CloudFoundry command-line:
 1. Run `cf push` from the project root directory
 
 The Cloud Foundry CLI will not provision the configured services for you, so you will need to do this manually using the IBM Cloud web console ([example](https://console.ng.bluemix.net/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance)) or the CloudFoundry CLI (`cf create-service` command)[http://cli.cloudfoundry.org/en-US/cf/create-service.html]. The service names and types will need to match your [configuration](#configuration).
-
-#### IBM Cloud toolchain
-
-You can also set up a default IBM Cloud Toolchain to handle deploying your application to IBM Cloud. This is achieved by publishing your application to a publicly accessible github repository and using the "Create Toolchain" button below. In this case configured services will be automatically provisioned, once, during toolchain creation.
-
-[![Create Toolchain](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
 
 ## Service descriptions
 
@@ -146,6 +136,8 @@ Your application has a set of cloud deployment configuration files defined to su
 * `.bluemix/pipeline.yml`
 
 The [`manifest.yml`](https://console.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest) defines options which are passed to the Cloud Foundry `cf push` command during application deployment.
+
+## Next steps
 
 [IBM Cloud DevOps](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html) service provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud, for both Cloud Foundry and Kubernetes applications. The ["Create Toolchain"](#deploy-to-ibm-cloud) button creates a DevOps toolchain and acts as a single-click deploy to IBM Cloud including provisioning all required services.
 
