@@ -12,6 +12,10 @@ When you have completed this code pattern, you will understand how to:
 * Generate an application with files for monitoring and distributed trace using App Metrics
 * Connect to additional provisioned services
 
+## Steps
+
+> As an alternative to the steps below, you can [create this project as a starter kit](https://console.bluemix.net/developer/appledevelopment/create-app?defaultDeploymentToolchain=&defaultLanguage=SWIFT&env_id=ibm%3Ayp%3Aus-south&navMode=catalog&starterKit=522c52e7-f9ed-3f95-a9bd-885fc881aa6e) on IBM Cloud, which automatically provisions required services, and injects service credentials into a custom fork of this pattern. Then, you can skip directly to step [TODO] below.
+
 ## Project contents
 
 This application has been generated with the following capabilities and services, which are described in full in their respective sections below:
