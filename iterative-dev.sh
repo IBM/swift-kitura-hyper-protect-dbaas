@@ -12,10 +12,10 @@
 
 # kills the executable for this project and the lldb debug server (if running)
 function killServerProcesses() {
-    pid="$(pgrep swiftkiturahypersecuredbaas)"
+    pid="$(pgrep swiftkiturahyperprotectdbaas)"
     if [ "$pid" != "" ]
     then
-        echo "killing swiftkiturahypersecuredbaas"
+        echo "killing swiftkiturahyperprotectdbaas"
         kill $pid
     fi
 
@@ -80,13 +80,13 @@ while true; do
             # assumes you are inside of Dockerfile-tools container
             # starts debug server on port 1024
             cd /swift-project/
-            /swift-utils/tools-utils.sh debug swiftkiturahypersecuredbaas 1024
+            /swift-utils/tools-utils.sh debug swiftkiturahyperprotectdbaas 1024
         else
             # assumes you are running from "normal"/host operating system
             swift build
             if [[ $? == 0 ]]; then 
                 # only start server is build was successful (result code 0)
-                ./.build/debug/swiftkiturahypersecuredbaas &
+                ./.build/debug/swiftkiturahyperprotectdbaas &
             fi
         fi
         

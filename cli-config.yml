@@ -1,7 +1,7 @@
 # The container name used for the run container
-container-name-run : "swiftkiturahypersecuredbaas-swift-run"
+container-name-run : "swiftkiturahyperprotectdbaas-swift-run"
 # The container name used for the tools container
-container-name-tools : "swiftkiturahypersecuredbaas-swift-tools"
+container-name-tools : "swiftkiturahyperprotectdbaas-swift-tools"
 
 # The project root on the host for the run container to mount to container-path-run
 host-path-run : "."
@@ -24,9 +24,9 @@ dockerfile-run : "Dockerfile"
 dockerfile-tools : "Dockerfile-tools"
 
 # The name of image to create from dockerfile-run
-image-name-run : "swiftkiturahypersecuredbaas-swift-run"
+image-name-run : "swiftkiturahyperprotectdbaas-swift-run"
 # The name of image to create from dockerfile-tools
-image-name-tools : "swiftkiturahypersecuredbaas-swift-tools"
+image-name-tools : "swiftkiturahyperprotectdbaas-swift-tools"
 
 # The command to build the code and docker image for RUN
 build-cmd-run : "/swift-utils/tools-utils.sh build release"
@@ -38,15 +38,15 @@ build-cmd-debug : "/swift-utils/tools-utils.sh build debug"
 # The command to run the code in the run container
 run-cmd : ""
 # The command to execute debug of the code in the tools container
-debug-cmd : "/swift-utils/tools-utils.sh debug swiftkiturahypersecuredbaas 1024"
+debug-cmd : "/swift-utils/tools-utils.sh debug swiftkiturahyperprotectdbaas 1024"
 # The command to stop the code
 stop-cmd : ""
 
 # The relative path to the helm chart used for Kubernetes deployment
-chart-path : "chart/swiftkiturahypersecuredbaas"
+chart-path : "chart/swiftkiturahyperprotectdbaas"
 
 # The IBM version of this configuration
 version : "0.0.3"
-ibm-generated-id : "e46aaba2-b16d-4db7-b2c2-7e0fd3738fc3"
-ibm-cloud-app-id : "a26c3deb-bb5f-47de-8d9c-cc17663ff88a"
+ibm-generated-id : "3e3d5066-1568-4f2f-b37e-6eba718401c1"
+ibm-cloud-app-id : "30aa5884-89a2-4a46-bf43-ccde4a48ee0c"
 credentials-filepath : "credentials.json, config.json, spec.json, localdev-config.json, config/localdev-config.json"

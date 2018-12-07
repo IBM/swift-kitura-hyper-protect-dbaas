@@ -2,5 +2,5 @@
 
 pkill swift
 cd .build/release
-./swiftkiturahypersecuredbaas
+./swiftkiturahyperprotectdbaas
 cd -
