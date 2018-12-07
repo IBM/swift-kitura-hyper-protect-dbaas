@@ -12,7 +12,9 @@ When you have completed this code pattern, you will understand how to:
 * Generate an application with files for monitoring and distributed trace using App Metrics
 * Connect to additional provisioned services
 
-> As an alternative to the deployment options documented below, you can [create this project as a starter kit](https://console.bluemix.net/developer/appledevelopment/create-app?defaultDeploymentToolchain=&defaultLanguage=SWIFT&env_id=ibm%3Ayp%3Aus-south&navMode=catalog&starterKit=522c52e7-f9ed-3f95-a9bd-885fc881aa6e) on IBM Cloud, which injects service credentials into a custom fork of this pattern after you have provisioned the database with your specifications.
+> As an alternative to the deployment options documented below, you can [create this project as a starter kit](https://console.bluemix.net/developer/appledevelopment/create-app?defaultDeploymentToolchain=&defaultLanguage=SWIFT&env_id=ibm%3Ayp%3Aus-south&navMode=catalog&starterKit=522c52e7-f9ed-3f95-a9bd-885fc881aa6e) on IBM Cloud, which injects service credentials into a custom fork of this pattern after you have provisioned the database with your specifications. Use this method to deploy to IBM Cloud with the click of a button.
+
+> You will need to provision the Hyper Protect DBaaS service yourself, providing paramteres like password. Make sure to select a service plan for MongoDB, as this sample does not yet work with its PostgreSQL offering.
 
 ## Project contents
 
@@ -35,7 +37,7 @@ This application has been generated with the following capabilities and services
 
 To build and run the application:
 1. `swift build`
-1. `.build/debug/swiftkiturahypersecuredbaas`
+1. `swift run`
 
 ### Docker
 
@@ -48,11 +50,11 @@ To compile the application using the tools docker image, run:
 * `docker run -v $PWD:/swift-project -w /swift-project myapp-build /swift-utils/tools-utils.sh build release`
 
 To run the application:
-* `docker run -it -p 8080:8080 -v $PWD:/swift-project -w /swift-project myapp-run sh -c .build-ubuntu/release/swiftkiturahypersecuredbaas`
+* `docker run -it -p 8080:8080 -v $PWD:/swift-project -w /swift-project myapp-run sh -c .build-ubuntu/release/swiftkiturahyperprotectdbaas`
 
 ### Kubernetes
 
-To deploy your application to your Kubernetes cluster, run `helm install --name myapp .` in the `/chart/swiftkiturahypersecuredbaas` directory. You need to make sure you change the `repository` variable in your `chart/swiftkiturahypersecuredbaas/values.yaml` file points to the docker image containing your runnable application.
+To deploy your application to your Kubernetes cluster, run `helm install --name myapp .` in the `/chart/swiftkiturahyperprotectbaas` directory. You need to make sure you change the `repository` variable in your `chart/swiftkiturahyperprotectdbaas/values.yaml` file points to the docker image containing your runnable application.
 
 ## Configuration
 
@@ -93,13 +95,13 @@ This content is hosted on `/`. For example, if you want to view `public/myfile.h
 
 ### OpenAPI / Swagger endpoint
 
-This application hosts an endpoint for serving the OpenAPI Swagger definition for this application. It expects the definition file to be located in `definitions/swiftkiturahypersecuredbaas.yaml`.
+This application hosts an endpoint for serving the OpenAPI Swagger definition for this application. It expects the definition file to be located in `definitions/swiftkiturahyperprotectdbaas.yaml`.
 
 The endpoint is hosted on `/swagger/api`. For example, if the application is hosted at https://localhost:8080, go to https://localhost:8080/swagger/api.
 
 ### Example endpoints
 
-This application includes an OpenAPI Swagger definition and routes for a Product example resource. The OpenAPI Swagger definition is located in the `definitions/swiftkiturahypersecuredbaas.yaml` directory.
+This application includes an OpenAPI Swagger definition and routes for a Product example resource. The OpenAPI Swagger definition is located in the `definitions/swiftkiturahyperprotectdbaas.yaml` directory.
 
 The specification of this interface is made available through an embedded Swagger UI hosted on `/explorer`. For example, if the application is hosted at https://localhost:8080, go to https://localhost:8080/explorer.
 
