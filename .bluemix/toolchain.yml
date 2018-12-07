@@ -7,7 +7,7 @@ template:
     - build
 
 toolchain:
-  name: swiftkiturahypersecuredbaas
+  name: swiftkiturahyperprotectdbaas
 
 services:
   # Github repos
@@ -50,7 +50,7 @@ form:
     schema:
       $ref: deploy.json
     parameters:
-      app-name: swiftkiturahypersecuredbaas
+      app-name: swiftkiturahyperprotectdbaas
       dev-region: "{{region}}"
       api-key: "{{api-key}}"
       dev-space: "{{space}}"

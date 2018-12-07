@@ -2,11 +2,13 @@
 applications:
 - instances: 1
   timeout: 180
-  name: swiftkiturahypersecuredbaas
+  name: swiftkiturahyperprotectdbaas
   buildpack: swift_buildpack
-  command: "'swiftkiturahypersecuredbaas'"
+  command: "'swiftkiturahyperprotectdbaas'"
   memory: 128M
   domain: not-used.net
   host: not-used
+  services:
+    - Hyper Protect DBaaS-0e
   env:
     OPENAPI_SPEC : "/swagger/api"

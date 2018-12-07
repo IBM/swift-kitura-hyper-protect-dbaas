@@ -24,4 +24,4 @@ RUN if [ $bx_dev_user != "root" ]; then useradd -ms /bin/bash -u $bx_dev_userid 
 COPY . /swift-project
 
 # Command to start Swift application
-CMD [ "sh", "-c", "cd /swift-project && .build-ubuntu/release/swiftkiturahypersecuredbaas" ]
+CMD [ "sh", "-c", "cd /swift-project && .build-ubuntu/release/swiftkiturahyperprotectdbaas" ]

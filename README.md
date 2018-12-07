@@ -1,9 +1,9 @@
 [![](https://img.shields.io/badge/IBM%20Cloud-powered-blue.svg)](https://bluemix.net)
 [![Platform](https://img.shields.io/badge/platform-ios_swift-lightgrey.svg?style=flat)](https://developer.apple.com/swift/)
 
-# Create a hypersecure Swift application using Kitura
+# Create a Hyper Protect secure Swift application using Kitura
 
-In this code pattern, you will create an server-side application using [Kitura](http://www.kitura.io/) in Swift and Hyper Protect Services. Hyper Protect Services bring continuous security to IBM Cloud, so all data is encrypted in flight, at rest, and in use.
+In this code pattern, you will create a server-side application using [Kitura](http://www.kitura.io/) in Swift and Hyper Protect Services. Hyper Protect Services bring continuous security to IBM Cloud, so all data is encrypted in flight, at rest, and in use.
 
 When you have completed this code pattern, you will understand how to:
 
@@ -12,7 +12,7 @@ When you have completed this code pattern, you will understand how to:
 * Generate an application with files for monitoring and distributed trace using App Metrics
 * Connect to additional provisioned services
 
-> As an alternative to the deployment options documented below, you can [create this project as a starter kit](https://console.bluemix.net/developer/appledevelopment/create-app?defaultDeploymentToolchain=&defaultLanguage=SWIFT&env_id=ibm%3Ayp%3Aus-south&navMode=catalog&starterKit=522c52e7-f9ed-3f95-a9bd-885fc881aa6e) on IBM Cloud, which automatically provisions required services, and injects service credentials into a custom fork of this pattern.
+> As an alternative to the deployment options documented below, you can [create this project as a starter kit](https://console.bluemix.net/developer/appledevelopment/create-app?defaultDeploymentToolchain=&defaultLanguage=SWIFT&env_id=ibm%3Ayp%3Aus-south&navMode=catalog&starterKit=522c52e7-f9ed-3f95-a9bd-885fc881aa6e) on IBM Cloud, which injects service credentials into a custom fork of this pattern after you have provisioned the database with your specifications.
 
 ## Project contents
 

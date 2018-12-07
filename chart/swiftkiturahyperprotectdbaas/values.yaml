@@ -3,7 +3,7 @@
 replicaCount: 1
 revisionHistoryLimit: 1
 image:
-  repository: registry.not-used.net/replace-me-namespace/swiftkiturahypersecuredbaas
+  repository: registry.not-used.net/replace-me-namespace/swiftkiturahyperprotectdbaas
   tag: v1.0.0
   pullPolicy: Always
   resources:
