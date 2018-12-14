@@ -33,6 +33,6 @@
 - name: service_hypersecure_dbaas_mongodb
   valueFrom:
     secretKeyRef:
-      name: binding-Hyper Protect DBaaS-0e
+      name: binding-hypersecuredbServiceName
       key: binding
       optional: true
