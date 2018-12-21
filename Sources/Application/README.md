@@ -2,7 +2,7 @@
 
 Basic Swift Kitura web project using a HyperSecure DBaaS.
 
-[![](https://img.shields.io/badge/bluemix-powered-blue.svg)](https://bluemix.net)
+[![](https://img.shields.io/badge/bluemix-powered-blue.svg)](https://cloud.ibm.com)
 ![Platform](https://img.shields.io/badge/platform-SWIFT-lightgrey.svg?style=flat)
 
 ### Table of Contents
@@ -46,7 +46,7 @@ The IBM HyperSecure DBaaS is based on LinuxONE hardware architecture known for i
 #### IBM Cloud development tools setup (optional)
 
 1. Install [Docker](http://docker.io) on your machine.
-2. Install the [IBM Cloud CLI](https://console.ng.bluemix.net/docs/cli/index.html)
+2. Install the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli/index.html)
 3. Install the plugin with:
 
   `bx plugin install dev -r bluemix`
@@ -54,7 +54,7 @@ The IBM HyperSecure DBaaS is based on LinuxONE hardware architecture known for i
 
 #### IBM Cloud DevOps setup (optional)
 
-[![Create Toolchain](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
+[![Create Toolchain](https://cloud.ibm.com/devops/graphics/create_toolchain_button.png)](https://cloud.ibm.com/devops/setup/deploy/)
 
 [IBM Cloud DevOps](https://www.ibm.com/cloud-computing/bluemix/devops) services provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside Bluemix. The "Create Toolchain" button creates a DevOps toolchain and acts as a single-click deploy to IBM Cloud including provisioning all required services.
 

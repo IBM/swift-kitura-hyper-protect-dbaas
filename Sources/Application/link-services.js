@@ -127,7 +127,7 @@ class Bluemix {
 	}
 
 	static getInstanceNameFromCRN(crn) {
-		// Format: https://console.bluemix.net/docs/overview/crn.html#crn
+		// Format: https://cloud.ibm.com/docs/overview/crn.html#crn
 		var vals = crn.split(':');
 		if (vals.length >= 5 && vals[0] === "crn" && vals[1] === "v1") {
 			return vals[4];
