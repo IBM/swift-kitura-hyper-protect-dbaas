@@ -16,7 +16,7 @@ When you have completed this code pattern, you will understand how to:
 
 > As an alternative to the deployment options documented below, you can [create this project as a starter kit](https://cloud.ibm.com/developer/appledevelopment/create-app?defaultDeploymentToolchain=&defaultLanguage=SWIFT&env_id=ibm%3Ayp%3Aus-south&navMode=catalog&starterKit=522c52e7-f9ed-3f95-a9bd-885fc881aa6e) on IBM Cloud, which injects service credentials into a custom fork of this pattern after you have provisioned the database with your specifications. Use this method to deploy to IBM Cloud with the click of a button.
 
-> You will need to provision the Hyper Protect DBaaS service yourself, providing paramteres like password. Make sure to select a service plan for MongoDB, as this sample does not yet work with its PostgreSQL offering.
+> You will need to provision the Hyper Protect DBaaS service yourself, providing parameters like password. Make sure to select a service plan for MongoDB, as this sample does not yet work with its PostgreSQL offering.
 
 ## Project contents
 
