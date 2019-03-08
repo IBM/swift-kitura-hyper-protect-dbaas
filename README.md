@@ -81,7 +81,7 @@ To use iterative development:
 You can deploy your application to IBM Cloud using the CloudFoundry CLI.
 
 You can deploy the application to IBM Cloud using the CloudFoundry command-line:
-1. Install the Cloud Foundry command-line (https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+1. Install the [Cloud Foundry command-line](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 1. Ensure all configured services have been provisioned
 1. Run `cf push` from the project root directory
 
