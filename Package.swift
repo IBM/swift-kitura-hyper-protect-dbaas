@@ -9,7 +9,7 @@ let package = Package(
       .package(url: "https://github.com/IBM-Swift/CloudEnvironment.git", from: "9.0.0"),
       .package(url: "https://github.com/RuntimeTools/SwiftMetrics.git", from: "2.0.0"),
       .package(url: "https://github.com/IBM-Swift/Health.git", from: "1.0.0"),
-      .package(url: "https://github.com/OpenKitten/MongoKitten.git", from: "4.0.0"),
+      .package(url: "https://github.com/OpenKitten/MongoKitten.git", from: "5.1.11"),
     ],
     targets: [
       .target(name: "swiftkiturahyperprotectdbaas", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
