@@ -70,7 +70,7 @@ When you push your application to IBM Cloud, these values are no longer used, in
 
 ### Iterative Development
 
-The `iterative-dev.sh` script is included in the root of the generated Swift project and allows for fast & easy iterations for the developer. Instead of stopping the running Kitura server to see new code changes, while the script is running, it will automatically detect changes in the project's **.swift** files and recompile the app accordingly.
+The `iterative-dev.sh` script is included in the root of the generated Swift project and allows for fast and easy iterations for the developer. Instead of stopping the running Kitura server to see new code changes, while the script is running, it will automatically detect changes in the project's **.swift** files and recompile the app accordingly.
 
 To use iterative development:
 * For native OS, execute the `./iterative-dev.sh` script from the root of the project.
