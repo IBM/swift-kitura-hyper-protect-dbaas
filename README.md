@@ -7,10 +7,10 @@ In this code pattern, you will create a server-side application using [Kitura](h
 
 When you have completed this code pattern, you will understand how to:
 
-* Provision and integrate Hyper Protect Services
-* Generate an application with files for deploying to Kubernetes, Cloud Foundry or a DevOps Pipeline
-* Generate an application with files for monitoring and distributed trace using App Metrics
-* Connect to additional provisioned services
+* Provision and integrate Hyper Protect Services.
+* Generate an application with files for deploying to Kubernetes, Cloud Foundry or a DevOps Pipeline.
+* Generate an application with files for monitoring and distributed trace using App Metrics.
+* Connect to additional provisioned services.
 
 ![](images/architecture-bff.png)
 
@@ -64,7 +64,7 @@ Your application configuration information for any services is stored in the `lo
 
 The application uses the [CloudEnvironment package](https://github.com/IBM-Swift/CloudEnvironment) to read the connection and configuration information from the environment and this file. It uses `mappings.json`, found in the `config` directory, to communicate where the credentials can be found for each service.
 
-If the application is running locally, it can connect to IBM Cloud services using unbound credentials read from this file. If you need to create unbound credentials you can do so from the IBM Cloud web console ([example](https://cloud.ibm.com/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance)), or using the CloudFoundry CLI [`cf create-service-key` command](https://cli.cloudfoundry.org/en-US/cf/create-service-key.html).
+If the application is running locally, it can connect to IBM Cloud services using unbound credentials read from this file. If you need to create unbound credentials you can do so from the IBM Cloud web console ([example](https://cloud.ibm.com/docs/services/Cloudant/tutorials?topic=cloudant-creating-an-ibm-cloudant-instance-on-ibm-cloud)), or using the Cloud Foundry CLI [`cf create-service-key` command](https://cli.cloudfoundry.org/en-US/cf/create-service-key.html).
 
 When you push your application to IBM Cloud, these values are no longer used, instead the application automatically connects to bound services using environment variables.
 
@@ -78,14 +78,14 @@ To use iterative development:
 
 ## Deploy to IBM Cloud
 
-You can deploy your application to IBM Cloud using the CloudFoundry CLI.
+You can deploy your application to IBM Cloud using the Cloud Foundry CLI.
 
-You can deploy the application to IBM Cloud using the CloudFoundry command-line:
+You can deploy the application to IBM Cloud using the Cloud Foundry command-line:
 1. Install the [Cloud Foundry command-line](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 1. Ensure all configured services have been provisioned
 1. Run `cf push` from the project root directory
 
-The Cloud Foundry CLI will not provision the configured services for you, so you will need to do this manually using the IBM Cloud web console ([example](https://cloud.ibm.com/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance)) or the CloudFoundry CLI (`cf create-service` command)[http://cli.cloudfoundry.org/en-US/cf/create-service.html]. The service names and types will need to match your [configuration](#configuration).
+The Cloud Foundry CLI will not provision the configured services for you, so you will need to do this manually using the IBM Cloud web console ([example](https://cloud.ibm.com/docs/services/Cloudant/tutorials?topic=cloudant-creating-an-ibm-cloudant-instance-on-ibm-cloud)) or the CloudFoundry CLI (`cf create-service` command)[http://cli.cloudfoundry.org/en-US/cf/create-service.html]. The service names and types will need to match your [configuration](#configuration).
 
 ## Service descriptions
 
@@ -122,7 +122,7 @@ The application includes the following files for Docker support:
 * `Dockerfile`
 * `Dockerfile-tools`
 
-The `.dockerignore` file contains the files/directories that should not be included in the built docker image. By default this file contains the `Dockerfile` and `Dockerfile-tools`. It can be modified as required.
+The `.dockerignore` file contains the files/directories that should not be included in the built docker image. By default, this file contains the `Dockerfile` and `Dockerfile-tools`. It can be modified as required.
 
 The `Dockerfile` defines the specification of the default docker image for running the application. This image can be used to run the application.
 
@@ -141,7 +141,7 @@ The [`manifest.yml`](https://cloud.ibm.com/docs/manageapps/depapps.html#appmanif
 
 ## Next steps
 
-Leverage the [IBM Cloud DevOps](https://cloud.ibm.com/docs/services/ContinuousDelivery/index.html) service, which provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud, for both Cloud Foundry and Kubernetes applications.
+Leverage the [IBM Cloud DevOps](https://cloud.ibm.com/docs/services/ContinuousDelivery?topic=ContinuousDelivery-getting-started) service, which provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud, for both Cloud Foundry and Kubernetes applications.
 
 ## License
 
