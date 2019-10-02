@@ -17,7 +17,7 @@ class MongoController {
     fileprivate let router: Router
 
     // The mongo database
-    fileprivate let database: Database
+    fileprivate let database: MongoDatabase
 
     // The name of the database collection
     fileprivate let collectionName: String
@@ -34,7 +34,7 @@ class MongoController {
         self.database =  app.services.mongoDBService
 
         // Create the collection if necessary
-        let _ = try? database.createCollection(named: collectionName)
+        let _ = database[collectionName]
     }
 
     // Method to register routes
@@ -56,10 +56,12 @@ extension MongoController {
     fileprivate func getAll(request: RouterRequest, response: RouterResponse, next: () -> Void) throws {
         do {
             // Finds the items in the collection and convert it to a json object
-            let items = try collection.find()
-                .makeDocument()
-                .makeExtendedJSONString()
+            let items = try collection.find().allResults().wait()
+                
+                //.makeDocument()
+                //.makeExtendedJSONString()
 
+            // edFixMe : this returns bson but incorrectly marked as json, find BSON -> JSON for bson 7.0
             // Send success response
             response.headers.setType("json")
             try response.send(items).end()
@@ -79,17 +81,24 @@ extension MongoController {
 
         do {
             // Create MongoKitten ID
-            let _id = try ObjectId(id)
+            let _id = ObjectId(id)
 
             // Find item in database
-            guard let item = try collection.findOne("_id" == _id)?.makeExtendedJSONString() else {
+            guard let item = try collection.findOne("_id" == _id).wait()
+            else {
                 try response.send(status: .notFound).end()
                 return
             }
-
             // Send success response
-            response.headers.setType("json")
-            try response.send(item).end()
+                // edFixMe : figure out BSON to JSON conversion in BSON 7
+                response.headers.setType("json")
+                try response.send(item).end()
+
+            //            makeExtendedJSONString() else {
+//                try response.send(status: .notFound).end()
+//                return
+//            }
+
         } catch {
             response.status(.internalServerError)
             Log.error("Error: Unable to retrieve object from the database")
@@ -153,15 +162,16 @@ extension MongoController {
 
         do {
             // Create MongoKitten ID
-            let _id = try ObjectId(id)
+            let _id = ObjectId(id)
             // Update Document with ID
-            let result = try collection.update("_id" == _id, to: document)
+            let result = try collection.updateOne(where: "_id" == _id, to: document).wait()
             // Send appropriate result
-            if result == 1 {
+            if result.updatedCount == 1 {
                 try response.send(json: document).end()
             } else {
                 try response.status(.notFound).end()
             }
+            try response.status(.notFound).end()
 
         } catch {
             response.status(.internalServerError)
@@ -181,11 +191,11 @@ extension MongoController {
 
         do {
             // Create MongoKitten ID
-            let _id = try ObjectId(id)
+            let _id = ObjectId(id)
             // Remove item from collection
-            let result = try collection.remove("_id" == _id, limitedTo: 1)
+            let result = try collection.deleteOne(where: "_id" == _id).wait()
             // Create response code
-            let status: HTTPStatusCode = result == 1 ? .OK : .notFound
+            let status: HTTPStatusCode = result.ok > 0 ? .OK : .notFound
             // Send response
             try response.send(status: status).end()
         } catch {
@@ -210,7 +220,7 @@ extension MongoController {
     // Helper method to convert json to MongoKitten Document
     fileprivate func convert(json: Data) -> Document? {
         guard let jsonStr = String(data: json, encoding: .utf8),
-              let doc = try? Document(extendedJSON: jsonStr) else {
+            let doc = try? Document(arrayLiteral: jsonStr) else {
             return nil
         }
         return doc

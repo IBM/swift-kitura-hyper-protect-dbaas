@@ -11,3 +11,6 @@ config.json
 spec.json
 localdev-config.json
 config/localdev-config.json
+swiftkiturahyperprotectdbaas.xcodeproj/*
+.history
+Package.resolved

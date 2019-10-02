@@ -14,7 +14,7 @@ public let health = Health()
 
 class ApplicationServices {
     // Initialize services
-    public let mongoDBService: MongoKitten.Database
+    public let mongoDBService: MongoKitten.MongoDatabase
 
     public init(cloudEnv: CloudEnv) throws {
         // Run service initializers

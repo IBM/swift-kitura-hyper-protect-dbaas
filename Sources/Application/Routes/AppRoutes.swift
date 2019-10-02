@@ -17,7 +17,7 @@ class SupplementalMongoController {
     fileprivate let router: Router
 
     // The mongo database
-    fileprivate let database: Database
+    fileprivate let database: MongoDatabase
 
     // The name of the database collection
     fileprivate let collectionName: String
@@ -34,7 +34,7 @@ class SupplementalMongoController {
         self.database =  app.services.mongoDBService
 
         // Create the collection if necessary
-        let _ = try? database.createCollection(named: collectionName)
+        let _ = database[collectionName]
     }
 
     // Method to register routes
@@ -72,11 +72,11 @@ extension SupplementalMongoController {
 
         do {
             // Create MongoKitten ID
-            let _id = try ObjectId(id)
+            let _id = ObjectId(id)
             // Update Document with ID
-            let result = try collection.update("_id" == _id, to: document)
+            let result = try collection.updateOne(where : "_id" == _id, to: document).wait()
             // Send appropriate result
-            if result == 1 {
+            if result.updatedCount == 1 {
                 try response.send(json: document).end()
             } else {
                 try response.status(.notFound).end()
@@ -117,7 +117,7 @@ extension SupplementalMongoController {
     fileprivate func deleteAll(request: RouterRequest, response: RouterResponse, next: () -> Void) throws {
         do {
             // Remove all items from the collection
-            try collection.remove()
+            collection.drop()
             // Send success response
             try response.status(.OK).end()
         } catch {
@@ -129,7 +129,7 @@ extension SupplementalMongoController {
     // Helper method to convert json to MongoKitten Document
     fileprivate func convert(json: Data) -> Document? {
         guard let jsonStr = String(data: json, encoding: .utf8),
-              let doc = try? Document(extendedJSON: jsonStr) else {
+            let doc = try? Document(arrayLiteral: jsonStr) else {
             return nil
         }
         return doc
