@@ -124,7 +124,7 @@ extension MongoController {
 
         do {
             // Insert into database
-            try collection.insert(document)
+            collection.insert(document)
 
             // Send success response
             response.status(.created)
