@@ -33,7 +33,11 @@ This application has been generated with the following capabilities and services
 
 ## Requirements
 
-* [Swift 4](https://swift.org/download/)
+* [Swift 5](https://swift.org/download/)
+
+## To modify in XCode 
+
+`swift package generate-xcodeproj`
 
 ## Run
 

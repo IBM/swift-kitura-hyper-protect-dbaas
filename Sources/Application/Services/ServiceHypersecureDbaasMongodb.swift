@@ -1,17 +1,16 @@
 import LoggerAPI
 import CloudEnvironment
-import MongoKitten
+import MongoSwift
+import Foundation
 
-func initializeServiceHypersecureDbaasMongodb(cloudEnv: CloudEnv) throws -> Database {
-    guard let mongodbCredentials = cloudEnv.getHyperSecureDBaaSCredentials(name: "hypersecure_dbaas_mongodb") else {
-        throw InitializationError("Could not load credentials for HyperSecure MongoDB.")
+func initializeServiceHypersecureDbaasMongodb(cloudEnv: CloudEnv) throws -> SyncMongoClient {
+    guard let mongodbCredentials = cloudEnv.getHyperSecureDBaaSCredentials(name: "hyperprotect_dbaas_mongodb") else {
+        throw InitializationError("Could not load credentials for HyperProtect MongoDB.")
     }
 
-    // Add SSL Certificate parameters
-    let mongodbUri = mongodbCredentials.uri.components(separatedBy: "?")[0]
-    let mongodbSsl = mongodbUri + "?ssl=true&ssl_ca_certs=/Sources/Application/Services/cert.pem"
+    let sslOpts = TLSOptions(allowInvalidHostnames: true, caFile: URL(string: mongodbCredentials.cert), pemFile: nil)
 
-    let mongodb = try Database.synchronousConnect(mongodbSsl)
-    Log.info("Found and loaded credentials for HyperSecure MongoDB.")
+    let mongodb = try  SyncMongoClient(String("mongodb://\(mongodbCredentials.username):\(mongodbCredentials.password)@\(mongodbCredentials.uri)/\(mongodbCredentials.db)"),options: ClientOptions(serverMonitoring: true, tlsOptions: sslOpts))
+    Log.info("Found and loaded credentials for HyperProtect MongoDB.")
     return mongodb
 }

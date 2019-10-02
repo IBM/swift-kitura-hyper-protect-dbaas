@@ -88,7 +88,8 @@ class RouteTests: XCTestCase {
 private extension URLRequest {
 
     init?(forTestWithMethod method: String, route: String = "", body: Data? = nil) {
-        if let url = URL(string: "http://127.0.0.1:\(RouteTests.port)/" + route){
+        // 27017 is the default Mongo port
+        if let url = URL(string: "http://127.0.0.1:\(RouteTests.port ?? 27017)/" + route){
             self.init(url: url)
             addValue("application/json", forHTTPHeaderField: "Content-Type")
             httpMethod = method
