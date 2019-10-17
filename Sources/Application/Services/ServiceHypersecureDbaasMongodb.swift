@@ -4,12 +4,12 @@ import MongoSwift
 import Foundation
 
 func initializeServiceHypersecureDbaasMongodb(cloudEnv: CloudEnv) throws -> SyncMongoClient {
-    guard let mongodbCredentials = cloudEnv.getHyperSecureDBaaSCredentials(name: "hypersecure_dbaas_mongodb") else {
-        throw InitializationError("Could not load credentials for HyperProtect MongoDB.")
-    }
+    //guard let mongodbCredentials = cloudEnv.getHyperSecureDBaaSCredentials(name: "hypersecure_dbaas_mongodb") else {
+        //throw InitializationError("Could not load credentials for HyperProtect MongoDB.")
+    //}
 
     // Add SSL Certificate parameters
-    let mongodbUri = mongodbCredentials.uri.components(separatedBy: "?")[0]
+    //let mongodbUri = mongodbCredentials.uri.components(separatedBy: "?")[0]
 
     let sslOpts = TLSOptions(allowInvalidHostnames: true, caFile: URL(string: "/Users/edesouza/Projects/swift-dbaas-test/kitura-dbaas/Sources/cert.pem"), pemFile: nil)
 

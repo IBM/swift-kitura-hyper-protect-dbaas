@@ -76,7 +76,7 @@ extension SupplementalMongoController {
             Log.error("Body contains invalid JSON")
             return
         }
-        
+
         do {
             // Create MongoKitten ID
             let _id = ObjectId(id)

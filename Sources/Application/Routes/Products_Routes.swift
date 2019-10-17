@@ -14,6 +14,7 @@ func initializeProducts_Routes(app: App) {
 
 /// A Codable type that matches the data in our Products in routes
 private struct Product: Codable {
+    var id : String
     var name: String
     var description: String
 }
@@ -76,7 +77,7 @@ extension MongoController {
             
             // Send success response
             response.headers.setType("json")
-            try response.send(Array(items)).end()
+            try response.send([ "Values" : items.compactMap{$0}]).end()
         } catch {
             response.status(.internalServerError)
             Log.error("Error: Unable to retrieve objects from the database")
@@ -92,20 +93,13 @@ extension MongoController {
         }
         
         do {
-            // Create MongoKitten ID
-            let _id = ObjectId(id)!
-            
             // Find item in database
-            let item = try collection.find(["_id": _id])
-
-//            else {
-//                    response.status(.internalServerError)
-//                    Log.error("Error: Object doesn't exist")
-//            }
-
-            response.headers.setType("json")
-            try response.send(Array(item)).end()
+            let item = try collection.find(["id" : id])
             
+            response.headers.setType("json")
+            let items = item.compactMap{$0}
+            if (!items.isEmpty) {try response.send(items[0]).end()}
+            else { try response.status(.badRequest).end() }
         } catch {
             response.status(.internalServerError)
             Log.error("Error: Unable to retrieve object from the database")
@@ -121,21 +115,16 @@ extension MongoController {
             Log.error("No body found in request")
             return
         }
-
-        // Convert json data to Mongo Swift Document
-        guard let document = convert(json: data) else {
-            try response.status(.badRequest).end()
-            Log.error("Body contains invalid JSON")
-            return
-        }
+        
+        let product = try! JSONDecoder().decode(Product.self, from: data)
         
         do {
             // Insert into database
-            try collection.insertOne(Product.init(name: document.keys[0] , description: document.values[0] as! String))
- 
+            try collection.insertOne(product)
+            
             // Send success response
             response.status(.created)
-            try response.send(json: document).end()
+            try response.send([ "Added" : product ]).end()
             
         } catch {
             response.status(.internalServerError)
@@ -160,21 +149,15 @@ extension MongoController {
             return
         }
         
-        // Convert json data to MongoKitten Document
-        guard let document = convert(json: data) else {
-            try response.status(.badRequest).end()
-            Log.error("Body contains invalid JSON")
-            return
-        }
+        // edFixMe Update's not working
+        let document = try Document.init(fromJSON: data)
         
         do {
-            // Create MongoKitten ID
-            let _id = ObjectId(id)!
-            // Update Document with ID
-            let result = try collection.updateOne(filter: ["_id" == _id.hex], update: document)
+            let result = try collection.updateMany(filter: ["id" : id], update: document)
+
             // Send appropriate result
             if result?.upsertedCount == 1 {
-                try response.send(json: document).end()
+                try response.send([ "Updated" : document]).end()
             } else {
                 try response.status(.notFound).end()
             }
@@ -195,34 +178,17 @@ extension MongoController {
             Log.error("Expected parameter: `id`")
             return
         }
-        
+
         do {
-            // Create MongoKitten ID
-            // _id = ObjectId(id)!
             // Remove item from collection
-            let result = try collection.deleteOne(["_id" == id])
-            // Create response code
-            let status: HTTPStatusCode = result == nil ? .OK : .notFound
+            let result = try collection.deleteMany(["id" : id])
             // Send response
-            try response.send(status: status).end()
+            try response.send(["Deleted" : result?.deletedCount]).end()
         } catch {
             response.status(.internalServerError)
             Log.error("Error: Unable to remove object from the database")
         }
     }
-    
-    /*// Handler to delete all entries in the database
-     fileprivate func deleteAll(request: RouterRequest, response: RouterResponse, next: () -> Void) throws {
-     do {
-     // Remove all items from the collection
-     try collection.remove()
-     // Send success response
-     try response.status(.OK).end()
-     } catch {
-     response.status(.internalServerError)
-     Log.error("Error: Unable to remove objects from the database")
-     }
-     }*/
     
     // Helper method to convert json to MongoKitten Document
     fileprivate func convert(json: Data) -> Document? {
