@@ -7,18 +7,18 @@ import KituraContracts
 import Health
 
 // Service imports
-import MongoKitten
+import MongoSwift
 
 public let projectPath = ConfigurationManager.BasePath.project.path
 public let health = Health()
 
 class ApplicationServices {
     // Initialize services
-    public let mongoDBService: MongoKitten.Database
+    public let mongoDBClientService: SyncMongoClient
 
     public init(cloudEnv: CloudEnv) throws {
         // Run service initializers
-        mongoDBService = try initializeServiceHypersecureDbaasMongodb(cloudEnv: cloudEnv)
+        mongoDBClientService = try initializeServiceHypersecureDbaasMongodb(cloudEnv: cloudEnv)
     }
 }
 

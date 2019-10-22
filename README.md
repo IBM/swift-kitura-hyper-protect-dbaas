@@ -3,18 +3,20 @@
 
 # Create a Hyper Protect secure Swift application using Kitura
 
-In this code pattern, you will create a server-side application using [Kitura](http://www.kitura.io/) in Swift and Hyper Protect Services. Hyper Protect Services bring continuous security to IBM Cloud, so all data is encrypted in flight, at rest, and in use.
+In this code pattern, you will create a server-side application using [Kitura](https://www.kitura.io/) in Swift and Hyper Protect Services. Hyper Protect Services bring continuous security to IBM Cloud, so all data is encrypted in flight, at rest, and in use.
 
 When you have completed this code pattern, you will understand how to:
 
-* Provision and integrate Hyper Protect Services
-* Generate an application with files for deploying to Kubernetes, Cloud Foundry or a DevOps Pipeline
-* Generate an application with files for monitoring and distributed trace using App Metrics
-* Connect to additional provisioned services
+* Provision and integrate Hyper Protect Services.
+* Generate an application with files for deploying to Kubernetes, Cloud Foundry or a DevOps Pipeline.
+* Generate an application with files for monitoring and distributed trace using App Metrics.
+* Connect to additional provisioned services.
 
-> As an alternative to the deployment options documented below, you can [create this project as a starter kit](https://console.bluemix.net/developer/appledevelopment/create-app?defaultDeploymentToolchain=&defaultLanguage=SWIFT&env_id=ibm%3Ayp%3Aus-south&navMode=catalog&starterKit=522c52e7-f9ed-3f95-a9bd-885fc881aa6e) on IBM Cloud, which injects service credentials into a custom fork of this pattern after you have provisioned the database with your specifications. Use this method to deploy to IBM Cloud with the click of a button.
+![](images/architecture-bff.png)
 
-> You will need to provision the Hyper Protect DBaaS service yourself, providing paramteres like password. Make sure to select a service plan for MongoDB, as this sample does not yet work with its PostgreSQL offering.
+> As an alternative to the deployment options documented below, you can [create this project as a starter kit](https://cloud.ibm.com/developer/appledevelopment/create-app?defaultDeploymentToolchain=&defaultLanguage=SWIFT&env_id=ibm%3Ayp%3Aus-south&navMode=catalog&starterKit=522c52e7-f9ed-3f95-a9bd-885fc881aa6e) on IBM Cloud, which injects service credentials into a custom fork of this pattern after you have provisioned the database with your specifications. Use this method to deploy to IBM Cloud with the click of a button.
+
+> You will need to provision the Hyper Protect DBaaS service yourself, providing parameters like password. Make sure to select a service plan for MongoDB, as this sample does not yet work with its PostgreSQL offering.
 
 ## Project contents
 
@@ -31,7 +33,11 @@ This application has been generated with the following capabilities and services
 
 ## Requirements
 
-* [Swift 4](https://swift.org/download/)
+* [Swift 5](https://swift.org/download/)
+
+## To modify in XCode 
+
+`swift package generate-xcodeproj`
 
 ## Run
 
@@ -62,13 +68,13 @@ Your application configuration information for any services is stored in the `lo
 
 The application uses the [CloudEnvironment package](https://github.com/IBM-Swift/CloudEnvironment) to read the connection and configuration information from the environment and this file. It uses `mappings.json`, found in the `config` directory, to communicate where the credentials can be found for each service.
 
-If the application is running locally, it can connect to IBM Cloud services using unbound credentials read from this file. If you need to create unbound credentials you can do so from the IBM Cloud web console ([example](https://console.ng.bluemix.net/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance)), or using the CloudFoundry CLI [`cf create-service-key` command](http://cli.cloudfoundry.org/en-US/cf/create-service-key.html).
+If the application is running locally, it can connect to IBM Cloud services using unbound credentials read from this file. If you need to create unbound credentials you can do so from the IBM Cloud web console ([example](https://cloud.ibm.com/docs/services/Cloudant/tutorials?topic=cloudant-creating-an-ibm-cloudant-instance-on-ibm-cloud)), or using the Cloud Foundry CLI [`cf create-service-key` command](https://cli.cloudfoundry.org/en-US/cf/create-service-key.html).
 
 When you push your application to IBM Cloud, these values are no longer used, instead the application automatically connects to bound services using environment variables.
 
 ### Iterative Development
 
-The `iterative-dev.sh` script is included in the root of the generated Swift project and allows for fast & easy iterations for the developer. Instead of stopping the running Kitura server to see new code changes, while the script is running, it will automatically detect changes in the project's **.swift** files and recompile the app accordingly.
+The `iterative-dev.sh` script is included in the root of the generated Swift project and allows for fast and easy iterations for the developer. Instead of stopping the running Kitura server to see new code changes, while the script is running, it will automatically detect changes in the project's **.swift** files and recompile the app accordingly.
 
 To use iterative development:
 * For native OS, execute the `./iterative-dev.sh` script from the root of the project.
@@ -76,20 +82,20 @@ To use iterative development:
 
 ## Deploy to IBM Cloud
 
-You can deploy your application to IBM Cloud using the [CloudFoundry CLI](#cloudfoundry-cli).
+You can deploy your application to IBM Cloud using the Cloud Foundry CLI.
 
-You can deploy the application to IBM Cloud using the CloudFoundry command-line:
-1. Install the Cloud Foundry command-line (https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+You can deploy the application to IBM Cloud using the Cloud Foundry command-line:
+1. Install the [Cloud Foundry command-line](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 1. Ensure all configured services have been provisioned
 1. Run `cf push` from the project root directory
 
-The Cloud Foundry CLI will not provision the configured services for you, so you will need to do this manually using the IBM Cloud web console ([example](https://console.ng.bluemix.net/docs/services/Cloudant/tutorials/create_service.html#creating-a-service-instance)) or the CloudFoundry CLI (`cf create-service` command)[http://cli.cloudfoundry.org/en-US/cf/create-service.html]. The service names and types will need to match your [configuration](#configuration).
+The Cloud Foundry CLI will not provision the configured services for you, so you will need to do this manually using the IBM Cloud web console ([example](https://cloud.ibm.com/docs/services/Cloudant/tutorials?topic=cloudant-creating-an-ibm-cloudant-instance-on-ibm-cloud)) or the CloudFoundry CLI (`cf create-service` command)[http://cli.cloudfoundry.org/en-US/cf/create-service.html]. The service names and types will need to match your [configuration](#configuration).
 
 ## Service descriptions
 
 ### Static web file serving
 
-This application includes a `public` directory in the root of the project. The contents of this directory will be served as static content using the built-in Kitura [StaticFileServer module](https://github.com/IBM-Swift/Kitura/wiki/Serving-Static-Content).
+This application includes a `public` directory in the root of the project. The contents of this directory will be served as static content using the built-in Kitura [StaticFileServer module](https://www.kitura.io/guides/routing/htmlforms.html#staticfileserver).
 
 This content is hosted on `/`. For example, if you want to view `public/myfile.html` and the application is hosted at https://localhost:8080, go to https://localhost:8080/myfile.html.
 
@@ -120,7 +126,7 @@ The application includes the following files for Docker support:
 * `Dockerfile`
 * `Dockerfile-tools`
 
-The `.dockerignore` file contains the files/directories that should not be included in the built docker image. By default this file contains the `Dockerfile` and `Dockerfile-tools`. It can be modified as required.
+The `.dockerignore` file contains the files/directories that should not be included in the built docker image. By default, this file contains the `Dockerfile` and `Dockerfile-tools`. It can be modified as required.
 
 The `Dockerfile` defines the specification of the default docker image for running the application. This image can be used to run the application.
 
@@ -135,11 +141,11 @@ Your application has a set of cloud deployment configuration files defined to su
 * `.bluemix/toolchain.yml`
 * `.bluemix/pipeline.yml`
 
-The [`manifest.yml`](https://console.ng.bluemix.net/docs/manageapps/depapps.html#appmanifest) defines options which are passed to the Cloud Foundry `cf push` command during application deployment.
+The [`manifest.yml`](https://cloud.ibm.com/docs/manageapps/depapps.html#appmanifest) defines options which are passed to the Cloud Foundry `cf push` command during application deployment.
 
 ## Next steps
 
-Leverage the [IBM Cloud DevOps](https://console.ng.bluemix.net/docs/services/ContinuousDelivery/index.html) service, which provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud, for both Cloud Foundry and Kubernetes applications.
+Leverage the [IBM Cloud DevOps](https://cloud.ibm.com/docs/services/ContinuousDelivery?topic=ContinuousDelivery-getting-started) service, which provides toolchains as a set of tool integrations that support development, deployment, and operations tasks inside IBM Cloud, for both Cloud Foundry and Kubernetes applications.
 
 ## License
 
