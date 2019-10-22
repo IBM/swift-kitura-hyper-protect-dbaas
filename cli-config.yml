@@ -47,6 +47,4 @@ chart-path : "chart/swiftkiturahyperprotectdbaas"
 
 # The IBM version of this configuration
 version : "0.0.3"
-ibm-generated-id : "3e3d5066-1568-4f2f-b37e-6eba718401c1"
-ibm-cloud-app-id : "30aa5884-89a2-4a46-bf43-ccde4a48ee0c"
 credentials-filepath : "credentials.json, config.json, spec.json, localdev-config.json, config/localdev-config.json"
