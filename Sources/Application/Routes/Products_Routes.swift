@@ -60,9 +60,7 @@ class MongoController {
         router.get("/\(collectionName)", handler: getAll)
         router.post("/\(collectionName)", handler: create)
         router.put("/\(collectionName)/:id", handler: update)
-        //router.patch("/\(collectionName)/:id", handler: update)
         router.delete("/\(collectionName)/:id", handler: delete)
-        //router.delete("/\(collectionName)", handler: deleteAll)
     }
 }
 
@@ -189,7 +187,7 @@ extension MongoController {
             Log.error("Error: Unable to remove object from the database")
         }
     }
-    
+
     // Helper method to convert json to MongoKitten Document
     fileprivate func convert(json: Data) -> Document? {
         guard let jsonStr = String(data: json, encoding: .utf8),

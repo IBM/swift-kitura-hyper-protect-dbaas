@@ -14,3 +14,4 @@ config/localdev-config.json
 swiftkiturahyperprotectdbaas.xcodeproj/*
 .history
 Package.resolved
+*.pem
